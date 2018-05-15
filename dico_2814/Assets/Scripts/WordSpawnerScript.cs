@@ -12,6 +12,7 @@ public class WordSpawnerScript : MonoBehaviour {
     // Private
     private float[] wordPositions = {-6.5f, -3.5f, 3.5f, 6.5f};
     private WordObject[] words;
+    private int numberOfWords;
 
     // Load words from json file and spawn them repeatedly.
     void Awake()
@@ -25,10 +26,21 @@ public class WordSpawnerScript : MonoBehaviour {
 
         // Spawn words repeatedly.
         InvokeRepeating("SpawnWord", 0.5f, 3f);
+
+        // Store the number of words needed locally.
+        numberOfWords = GameManager.Instance.numberOfWords;
     }
 
-    // Spawn a random word at a random position and save the word inside the object.
-    void SpawnWord()
+	private void Update()
+	{
+        // Stop spawning words if the number of words is reached.
+        if (numberOfWords == 0) {
+            CancelInvoke();
+        }
+	}
+
+	// Spawn a random word at a random position and save the word inside the object.
+	void SpawnWord()
     {
         // Randoms
         int randomPosition = Random.Range(0, 4);
@@ -48,6 +60,8 @@ public class WordSpawnerScript : MonoBehaviour {
 
         // Display text
         newWord.GetComponentInChildren<TextMesh>().text = randomWord.word;
+
+        numberOfWords -= 1;
     }
 }
 

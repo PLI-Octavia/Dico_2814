@@ -10,6 +10,7 @@ TagManager:
   - RightGoodToll
   - RightBadToll
   - Score
+  - WordsLeft
   layers:
   - Default
   - TransparentFX

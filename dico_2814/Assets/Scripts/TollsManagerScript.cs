@@ -21,9 +21,6 @@ public class TollsManagerScript : MonoBehaviour {
         // Hide left toll
         leftBadToll.SetActive(false);
         rightGoodToll.SetActive(false);
-
-        //leftBadToll.GetComponent<Renderer>().enabled = false;
-        //rightGoodToll.GetComponent<Renderer>().enabled = false;
 	}
 
     // Handle the switch of tolls
@@ -32,11 +29,11 @@ public class TollsManagerScript : MonoBehaviour {
         if (Input.GetKeyDown("space"))
         {
             // Reverse position
-            leftBadToll.GetComponent<Renderer>().enabled = !leftBadToll.GetComponent<Renderer>().enabled;
-            leftGoodToll.GetComponent<Renderer>().enabled = !leftGoodToll.GetComponent<Renderer>().enabled;
+            leftBadToll.SetActive(!leftBadToll.activeSelf);
+            leftGoodToll.SetActive(!leftGoodToll.activeSelf);
 
-            rightBadToll.GetComponent<Renderer>().enabled = !rightBadToll.GetComponent<Renderer>().enabled;
-            rightGoodToll.GetComponent<Renderer>().enabled = !rightGoodToll.GetComponent<Renderer>().enabled;
+            rightBadToll.SetActive(!rightBadToll.activeSelf);
+            rightGoodToll.SetActive(!rightGoodToll.activeSelf);
         }
     }
 }
