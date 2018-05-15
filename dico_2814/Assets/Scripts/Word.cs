@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Word
-{
-    public int id;
-    public string word;
-    public string correction;
-    public bool isCorrect;
+// This class save a WordObject in a word GameObject
+public class Word : MonoBehaviour {
+    public WordObject word;
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class WordCollisionScript : MonoBehaviour {
 
+    // Handle collision between words and tolls
     void OnCollisionEnter(Collision col)
     {
-        //WordContent wordContent = col.gameObject.GetComponent<WordContent>();
+        WordObject word = col.gameObject.GetComponent<Word>().word;
+        Debug.Log(word.correction);
 
         Destroy(col.gameObject);
     }

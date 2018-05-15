@@ -1,62 +1,42 @@
 [
   {
-    "id": 1,
     "word": "bonjour",
-    "correction": "bonjour",
-    "isCorrect": true
+    "correction": "bonjour"
   },
   {
-    "id": 2,
-    "word": "bonjur",
-    "correction": "bonjour",
-    "isCorrect": false
+    "word": "bonjours",
+    "correction": "bonjour"
   },
   {
-    "id": 3,
     "word": "kiki",
-    "correction": "kiki",
-    "isCorrect": true
+    "correction": "kiki"
   },
   {
-    "id": 4,
     "word": "kikii",
-    "correction": "kiki",
-    "isCorrect": false
+    "correction": "kiki"
   },
   {
-    "id": 5,
     "word": "maison",
-    "correction": "maison",
-    "isCorrect": true
+    "correction": "maison"
   },
   {
-    "id": 6,
     "word": "miason",
-    "correction": "maison",
-    "isCorrect": false
+    "correction": "maison"
   },
   {
-    "id": 7,
     "word": "coquillage",
-    "correction": "coquillage",
-    "isCorrect": true
+    "correction": "coquillage"
   },
   {
-    "id": 8,
     "word": "coquillag",
-    "correction": "coquillage",
-    "isCorrect": false
+    "correction": "coquillage"
   },
   {
-    "id": 9,
     "word": "téléphone",
-    "correction": "téléphone",
-    "isCorrect": true
+    "correction": "téléphone"
   },
   {
-    "id": 10,
     "word": "télléphone",
-    "correction": "téléphone",
-    "isCorrect": false
+    "correction": "téléphone"
   }
 ]

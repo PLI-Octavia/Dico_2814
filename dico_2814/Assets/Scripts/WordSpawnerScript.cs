@@ -6,47 +6,52 @@ using System.IO;
 
 public class WordSpawnerScript : MonoBehaviour {
 
+    // Public
     public GameObject word;
 
+    // Private
     private float[] wordPositions = {-6.5f, -3.5f, 3.5f, 6.5f};
-    private Word[] words;
+    private WordObject[] words;
 
+    // Load words from json file and spawn them repeatedly.
     void Awake()
     {
-        InvokeRepeating("SpawnNext", 0.5f, 3f);
-
+        // Load words from json.
         string path = "Assets/Data/words.json";
-
         StreamReader reader = new StreamReader(path);
         string jsonString = reader.ReadToEnd();
         reader.Close();
+        words = JsonHelper.FromJson<WordObject>("{\"Items\":" + jsonString + "}");
 
-        words = JsonHelper.FromJson<Word>("{\"Items\":" + jsonString + "}");
-        //words = JsonUtility.FromJson<WordContent>(jsonString);
-
-        Debug.Log(words[0].correction);
+        // Spawn words repeatedly.
+        InvokeRepeating("SpawnWord", 0.5f, 3f);
     }
 
-    void SpawnNext()
+    // Spawn a random word at a random position and save the word inside the object.
+    void SpawnWord()
     {
-        GameObject newWord = Instantiate(word);
+        // Randoms
         int randomPosition = Random.Range(0, 4);
+        int randomRange = Random.Range(0, words.Length);
 
+        // Objects
+        GameObject newWord = Instantiate(word);
+        WordObject randomWord = words[randomRange];
+        Word wordContent = newWord.GetComponent<Word>();
+
+        // Position the new word
         newWord.transform.position = new Vector3(wordPositions[randomPosition], 
                                                  5.5f, 0);
 
-        //WordContent wordContent = newWord.GetComponent<WordContent>();
+        // Save the wordObject inside the object
+        wordContent.word = randomWord;
 
-        //wordContent.id = Random.Range(0, 100);
-        //wordContent.word = "hellu";
-        //wordContent.correction = "hello";
-        //wordContent.isCorrect = false;
-
-        //newWord.GetComponentInChildren<TextMesh>().text = wordContent.word;
+        // Display text
+        newWord.GetComponentInChildren<TextMesh>().text = randomWord.word;
     }
 }
 
-
+// This class is used to serialize a json array, which is not possible with the native JsonUtility class.
 public static class JsonHelper
 {
     public static T[] FromJson<T>(string json)
