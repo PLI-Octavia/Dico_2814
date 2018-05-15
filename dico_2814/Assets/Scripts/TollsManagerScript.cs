@@ -19,8 +19,11 @@ public class TollsManagerScript : MonoBehaviour {
         rightGoodToll = GameObject.FindWithTag("RightGoodToll");
 
         // Hide left toll
-        leftBadToll.GetComponent<Renderer>().enabled = false;
-        rightGoodToll.GetComponent<Renderer>().enabled = false;
+        leftBadToll.SetActive(false);
+        rightGoodToll.SetActive(false);
+
+        //leftBadToll.GetComponent<Renderer>().enabled = false;
+        //rightGoodToll.GetComponent<Renderer>().enabled = false;
 	}
 
     // Handle the switch of tolls

@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class WordCollisionScript : MonoBehaviour {
 
-    // Handle collision between words and tolls
-    void OnCollisionEnter(Collision col)
-    {
-        WordObject word = col.gameObject.GetComponent<Word>().word;
-        Debug.Log(word.correction);
+    private GameObject score;
 
+	private void Awake()
+	{
+        score = GameObject.FindWithTag("Score");
+	}
+
+	// Handle collision between words and tolls
+	public void OnCollisionEnter(Collision col)
+    {
         Destroy(col.gameObject);
+        GameManager.Instance.score += 150;
+
+        WordObject word = col.gameObject.GetComponent<Word>().word;
+
+        score.GetComponentInChildren<TextMesh>().text = "Score : " + GameManager.Instance.score;
     }
 }

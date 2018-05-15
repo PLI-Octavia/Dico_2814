@@ -4,9 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - left_toll
-  - right_toll
   - word
+  - LeftGoodToll
+  - LeftBadToll
+  - RightGoodToll
+  - RightBadToll
+  - Score
   layers:
   - Default
   - TransparentFX
