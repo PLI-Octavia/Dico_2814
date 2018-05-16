@@ -12,6 +12,8 @@ TagManager:
   - Score
   - WordsLeft
   - Teleportation
+  - Correction
+  - Title
   layers:
   - Default
   - TransparentFX

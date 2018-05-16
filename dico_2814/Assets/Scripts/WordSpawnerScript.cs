@@ -17,12 +17,12 @@ public class WordSpawnerScript : MonoBehaviour {
     // Load words from json file and spawn them repeatedly.
     void Awake()
     {
-        // Load words from json.
-        string path = "Assets/Data/words.json";
-        StreamReader reader = new StreamReader(path);
-        string jsonString = reader.ReadToEnd();
-        reader.Close();
-        words = JsonHelper.FromJson<WordObject>("{\"Items\":" + jsonString + "}");
+        // TODO: Load from jsonConfig.
+        //string path = "Assets/Data/words.json";
+        //StreamReader reader = new StreamReader(path);
+        //string jsonString = reader.ReadToEnd();
+        //reader.Close();
+        words = JsonHelper.FromJson<WordObject>("{\"Items\":" + json + "}");
 
         // Spawn words repeatedly.
         InvokeRepeating("SpawnWord", 0.5f, 3f);
@@ -63,6 +63,9 @@ public class WordSpawnerScript : MonoBehaviour {
 
         numberOfWords -= 1;
     }
+
+    // TODO Delete
+    private string json = "[{\"word\":\"bonjour\",\"correction\":\"bonjour\"},{\"word\":\"bonjours\",\"correction\":\"bonjour\"},{\"word\":\"kiki\",\"correction\":\"kiki\"},{\"word\":\"kikii\",\"correction\":\"kiki\"},{\"word\":\"maison\",\"correction\":\"maison\"},{\"word\":\"miason\",\"correction\":\"maison\"},{\"word\":\"coquillage\",\"correction\":\"coquillage\"},{\"word\":\"coquillag\",\"correction\":\"coquillage\"},{\"word\":\"téléphone\",\"correction\":\"téléphone\"},{\"word\":\"télléphone\",\"correction\":\"téléphone\"}]";
 }
 
 // This class is used to serialize a json array, which is not possible with the native JsonUtility class.
