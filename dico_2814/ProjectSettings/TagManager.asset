@@ -11,6 +11,7 @@ TagManager:
   - RightBadToll
   - Score
   - WordsLeft
+  - Teleportation
   layers:
   - Default
   - TransparentFX

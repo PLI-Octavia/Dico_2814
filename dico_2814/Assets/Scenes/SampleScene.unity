@@ -197,7 +197,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4357045951792930, guid: 7abbb7d79c45e4dedb3964686627fbc9, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1556884948257656, guid: 7abbb7d79c45e4dedb3964686627fbc9, type: 2}
       propertyPath: m_Name
@@ -4840,8 +4840,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: 7c57ea82849d540078d53f1cadfd5fa8, type: 2}
+  - {fileID: 2100000, guid: 7c57ea82849d540078d53f1cadfd5fa8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9438,6 +9438,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9523,7 +9524,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48818912681da477a84a8cdd49f8096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  word: {fileID: 1404462351985682, guid: 41abe2021c7d44dbba764988a4b329ac, type: 2}
+  word: {fileID: 1742918859593270, guid: 41abe2021c7d44dbba764988a4b329ac, type: 2}
+--- !u!82 &519420034
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 29936aff120f94845a99a0c20997ee82, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &530165801
 GameObject:
   m_ObjectHideFlags: 0
@@ -27941,6 +28037,16 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114524410476024134, guid: f50c66f10868a405ab375bcaa37e12c5,
+        type: 2}
+      propertyPath: bounce
+      value: 
+      objectReference: {fileID: 8300000, guid: f9a7ad0f066034d4a8041c798dd49a08, type: 3}
+    - target: {fileID: 114524410476024134, guid: f50c66f10868a405ab375bcaa37e12c5,
+        type: 2}
+      propertyPath: teleport
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d913517e30d94ca992b417802af26f0, type: 3}
     m_RemovedComponents:
     - {fileID: 33018423041372298, guid: f50c66f10868a405ab375bcaa37e12c5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f50c66f10868a405ab375bcaa37e12c5, type: 2}
@@ -37164,8 +37270,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: 9476f15dd473545868a10689870364a6, type: 2}
+  - {fileID: 2100000, guid: 9476f15dd473545868a10689870364a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -46357,8 +46463,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: 85849bdcb709246a1ad77cc92b775e77, type: 2}
+  - {fileID: 2100000, guid: 85849bdcb709246a1ad77cc92b775e77, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50960,8 +51066,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: 35ad087cb0b3345febcfe7a68356d537, type: 2}
+  - {fileID: 2100000, guid: 35ad087cb0b3345febcfe7a68356d537, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55618,7 +55724,7 @@ Transform:
   m_LocalScale: {x: 0.63227606, y: 0.63227606, z: 0.63227606}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1324773623
 GameObject:
@@ -55669,8 +55775,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: 5b772ced8d5bf48d68508cf361f346fd, type: 2}
+  - {fileID: 2100000, guid: 5b772ced8d5bf48d68508cf361f346fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -69486,8 +69592,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: 62da6a726385c48abb266b3b0647dc7d, type: 2}
+  - {fileID: 2100000, guid: 62da6a726385c48abb266b3b0647dc7d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78779,8 +78885,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: c53767d8b14de4aab876aaa34f68b263, type: 2}
+  - {fileID: 2100000, guid: c53767d8b14de4aab876aaa34f68b263, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83434,8 +83540,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
-  - {fileID: 2100000, guid: 3417d26b73fdc4c88aea16c26052b45d, type: 2}
+  - {fileID: 2100000, guid: d875267b2ba2c4bbcb132b142b9c4887, type: 2}
+  - {fileID: 2100000, guid: d875267b2ba2c4bbcb132b142b9c4887, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
