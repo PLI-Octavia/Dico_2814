@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// WordObject to serialize the json
+// WordObject to serialize the json.
 [System.Serializable]
 public class WordObject
 {

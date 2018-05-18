@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/DicoMenu.unity
+    guid: 7e9faa07bc6f8498391200f876a53191
+  - enabled: 1
+    path: Assets/Scenes/DicoGame.unity
+    guid: 82f39bcc609234299a6258c197f7b128
   m_configObjects: {}

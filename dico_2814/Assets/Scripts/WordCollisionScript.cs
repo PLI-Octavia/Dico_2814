@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WordCollisionScript : MonoBehaviour {
 
@@ -20,9 +21,27 @@ public class WordCollisionScript : MonoBehaviour {
 
         // Hide the correction at launch
         correction.GetComponent<Renderer>().enabled = false;
+        correction.gameObject.transform.Find("Title").GetComponent<Renderer>().enabled = false;
 
         // Initialise the display of number of words left
         wordsLeft.GetComponentInChildren<TextMesh>().text = numberOfCollision + "/" + GameManager.Instance.numberOfWords;;
+	}
+
+	public void Update()
+	{
+        // At the end, display text.
+        if (numberOfCollision == GameManager.Instance.numberOfWords) {
+            correction.gameObject.transform.Find("Title").GetComponentInChildren<TextMesh>().text = "Appuie sur M\npour revenir au menu";
+            correction.gameObject.transform.Find("IncorrectWord").GetComponentInChildren<TextMesh>().text = "";
+            correction.gameObject.transform.Find("CorrectWord").GetComponentInChildren<TextMesh>().text = "";
+
+            correction.SetActive(true);
+
+            // Send to menu
+            if (Input.GetKeyDown(KeyCode.M)) {
+                SceneManager.LoadScene("DicoMenu", LoadSceneMode.Single);    
+            }
+        }
 	}
 
 	// Handle collision between words and tolls
@@ -31,8 +50,9 @@ public class WordCollisionScript : MonoBehaviour {
         WordObject word = col.gameObject.GetComponent<Word>().word;
         numberOfCollision++;
 
-        // Show and Disable the animation
+        // Show and Disable the correction
         correction.GetComponent<Renderer>().enabled = true;
+        correction.gameObject.transform.Find("Title").GetComponent<Renderer>().enabled = true;
         correction.SetActive(false);
 
         // If the word is correct
@@ -99,21 +119,21 @@ public class WordCollisionScript : MonoBehaviour {
                 // Play the bounce sound.
                 col.gameObject.transform.Find("BounceSound").GetComponent<AudioSource>().Play();
 
-                // Eject bad words to right or left
+                // Eject bad words to right or left.
                 float direction = gameObject.tag == "RightGoodToll" ? 1f : -1f;
                 col.rigidbody.AddForce(new Vector3(direction, 1f, 0f) * 3000);
                 Destroy(col.collider);
 
-                // Pause the game after 0.5 seconds and display the correction GUI
+                // Pause the game after 0.5 seconds and display the correction GUI.
                 displayCorrection(word);
                 Invoke("pause", 0.5f);
             }
         }
 
-        // Update score
+        // Update score.
         score.GetComponentInChildren<TextMesh>().text = "Score\n" + GameManager.Instance.score;
 
-        // Update words left
+        // Update words left.
         wordsLeft.GetComponentInChildren<TextMesh>().text = numberOfCorrectWords + "/" + GameManager.Instance.numberOfWords;
     }
 
@@ -130,18 +150,22 @@ public class WordCollisionScript : MonoBehaviour {
         correction.SetActive(false);
     }
 
+    // Display something when player is wrong.
     void displayCorrection(WordObject word) {
 
+        // If the word was incorrect.
         if (word.word != word.correction) {
             correction.gameObject.transform.Find("Title").GetComponentInChildren<TextMesh>().text = "Le mot était mauvais !";
             correction.gameObject.transform.Find("IncorrectWord").GetComponentInChildren<TextMesh>().text = word.word;
             correction.gameObject.transform.Find("CorrectWord").GetComponentInChildren<TextMesh>().text = word.correction;    
+        // If the word was correct.
         } else {
             correction.gameObject.transform.Find("Title").GetComponentInChildren<TextMesh>().text = "Le mot était bon !";
             correction.gameObject.transform.Find("IncorrectWord").GetComponentInChildren<TextMesh>().text = "";
             correction.gameObject.transform.Find("CorrectWord").GetComponentInChildren<TextMesh>().text = word.word;
         }
 
+        // Display the text.
         correction.SetActive(true);
     }
 }

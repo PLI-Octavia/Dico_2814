@@ -42,23 +42,23 @@ public class WordSpawnerScript : MonoBehaviour {
 	// Spawn a random word at a random position and save the word inside the object.
 	void SpawnWord()
     {
-        // Randoms
+        // Randoms.
         int randomPosition = Random.Range(0, 4);
         int randomRange = Random.Range(0, words.Length);
 
-        // Objects
+        // Objects.
         GameObject newWord = Instantiate(word);
         WordObject randomWord = words[randomRange];
         Word wordContent = newWord.GetComponent<Word>();
 
-        // Position the new word
+        // Position the new word.
         newWord.transform.position = new Vector3(wordPositions[randomPosition], 
                                                  5.5f, 0);
 
-        // Save the wordObject inside the object
+        // Save the wordObject inside the object.
         wordContent.word = randomWord;
 
-        // Display text
+        // Display text.
         newWord.GetComponentInChildren<TextMesh>().text = randomWord.word;
 
         numberOfWords -= 1;

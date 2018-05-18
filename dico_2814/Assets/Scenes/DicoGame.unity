@@ -28105,6 +28105,10 @@ Prefab:
       propertyPath: teleport
       value: 
       objectReference: {fileID: 8300000, guid: 8d913517e30d94ca992b417802af26f0, type: 3}
+    - target: {fileID: 4259599942875722, guid: f50c66f10868a405ab375bcaa37e12c5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 33018423041372298, guid: f50c66f10868a405ab375bcaa37e12c5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f50c66f10868a405ab375bcaa37e12c5, type: 2}
@@ -37338,6 +37342,11 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 23863038951083554, guid: e9d0c14c94d7e4e6db7e6f12ea02cb1a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9d0c14c94d7e4e6db7e6f12ea02cb1a, type: 2}

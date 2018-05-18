@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     // but it can't be set in the inspector, because we use lazy instantiation
     public int life = 3;
     public int score = 0;
-    public int numberOfWords = 10;
+    public int numberOfWords = 1;
 
     // Static singleton instance
     private static GameManager instance;
