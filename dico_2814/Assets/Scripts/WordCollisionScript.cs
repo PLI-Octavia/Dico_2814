@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class WordCollisionScript : MonoBehaviour {
 
@@ -13,11 +14,19 @@ public class WordCollisionScript : MonoBehaviour {
     static int numberOfCollision;
     static int numberOfCorrectWords;
 
+
+    [DllImport("__Internal")]
+    private static extern void SendScore(int score);
+
 	private void Awake()
 	{
         score = GameObject.FindWithTag("Score");
         wordsLeft = GameObject.FindWithTag("WordsLeft");
         correction = GameObject.FindWithTag("Correction");
+
+        // Reset counts
+        numberOfCollision = 0;
+        numberOfCorrectWords = 0;
 
         // Hide the correction at launch
         correction.GetComponent<Renderer>().enabled = false;
@@ -36,6 +45,12 @@ public class WordCollisionScript : MonoBehaviour {
             correction.gameObject.transform.Find("CorrectWord").GetComponentInChildren<TextMesh>().text = "";
 
             correction.SetActive(true);
+
+            // Calculate result
+            int result = (numberOfCorrectWords / GameManager.Instance.numberOfWords) * 20;
+
+            // Send result
+            SendScore(result);
 
             // Send to menu
             if (Input.GetKeyDown(KeyCode.M)) {
