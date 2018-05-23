@@ -11,9 +11,9 @@ public class WordCollisionScript : MonoBehaviour {
     private GameObject score;
     private GameObject wordsLeft;
     private GameObject correction;
+    static bool gameFinished = false;
     static int numberOfCollision;
     static int numberOfCorrectWords;
-
 
     [DllImport("__Internal")]
     private static extern void SendScore(int score);
@@ -27,6 +27,9 @@ public class WordCollisionScript : MonoBehaviour {
         // Reset counts
         numberOfCollision = 0;
         numberOfCorrectWords = 0;
+
+        // Reset finished game boolean
+        gameFinished = false;
 
         // Hide the correction at launch
         correction.GetComponent<Renderer>().enabled = false;
@@ -46,11 +49,17 @@ public class WordCollisionScript : MonoBehaviour {
 
             correction.SetActive(true);
 
-            // Calculate result
-            int result = (numberOfCorrectWords / GameManager.Instance.numberOfWords) * 20;
+            // Send result once
+            if (gameFinished == false) {
+                gameFinished = true;
 
-            // Send result
-            SendScore(result);
+                // Calculate the notation
+                float result = ((float)numberOfCorrectWords / (float)GameManager.Instance.numberOfWords) * 20;
+
+                // Send notation
+                int resultInt = (int)result;
+                SendScore(resultInt);
+            }
 
             // Send to menu
             if (Input.GetKeyDown(KeyCode.M)) {
