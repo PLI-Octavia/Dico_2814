@@ -5,6 +5,6 @@ var MyPlugin = {
 
     GetConfig: function () {
     	return gameManagement.getConfig()
-  },
+  	},
 };
 mergeInto(LibraryManager.library, MyPlugin);

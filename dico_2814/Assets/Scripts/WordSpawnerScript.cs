@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 
+public class BindingDllClass
+{
+    [DllImport("__Internal")]
+    public static extern string GetConfig();
+}
 
 public class WordSpawnerScript : MonoBehaviour {
 
@@ -14,15 +21,18 @@ public class WordSpawnerScript : MonoBehaviour {
     private WordObject[] words;
     private int numberOfWords;
 
+    [DllImport("__Internal")]
+    private static extern string GetConfig();
+ 
     // Load words from json file and spawn them repeatedly.
     void Awake()
     {
         // TODO: Load from jsonConfig.
-        //string path = "Assets/Data/words.json";
-        //StreamReader reader = new StreamReader(path);
-        //string jsonString = reader.ReadToEnd();
-        //reader.Close();
-        words = JsonHelper.FromJson<WordObject>("{\"Items\":" + json + "}");
+        string json = GetConfig();
+        words = JsonHelper.FromJson<WordObject>(json);
+
+        // Get the limit send by the json and save it in GameManager
+        GameManager.Instance.numberOfWords = int.Parse(JsonUtility.FromJson<Limit>(json).limit);
 
         // Spawn words repeatedly.
         InvokeRepeating("SpawnWord", 0.5f, 3f);
@@ -65,7 +75,7 @@ public class WordSpawnerScript : MonoBehaviour {
     }
 
     // TODO Delete
-    private string json = "[{\"word\":\"bonjour\",\"correction\":\"bonjour\"},{\"word\":\"bonjours\",\"correction\":\"bonjour\"},{\"word\":\"kiki\",\"correction\":\"kiki\"},{\"word\":\"kikii\",\"correction\":\"kiki\"},{\"word\":\"maison\",\"correction\":\"maison\"},{\"word\":\"miason\",\"correction\":\"maison\"},{\"word\":\"coquillage\",\"correction\":\"coquillage\"},{\"word\":\"coquillag\",\"correction\":\"coquillage\"},{\"word\":\"téléphone\",\"correction\":\"téléphone\"},{\"word\":\"télléphone\",\"correction\":\"téléphone\"}]";
+    //private string json = "{\"words\":[{\"word\":\"Bonjours\",\"correction\":\"Bonjour\"},{\"word\":\"Pomme\",\"correction\":\"Pomme\"},{\"word\":\"Chateau\",\"correction\":\"Chatau\"},{\"word\":\"vraix\",\"correction\":\"vrai\"},{\"word\":\"toujour\",\"correction\":\"toujours\"}],\"limit\":\"2\"}";
 }
 
 // This class is used to serialize a json array, which is not possible with the native JsonUtility class.
@@ -74,26 +84,26 @@ public static class JsonHelper
     public static T[] FromJson<T>(string json)
     {
         Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
+        return wrapper.words;
     }
 
     public static string ToJson<T>(T[] array)
     {
         Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
+        wrapper.words = array;
         return JsonUtility.ToJson(wrapper);
     }
 
     public static string ToJson<T>(T[] array, bool prettyPrint)
     {
         Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
+        wrapper.words = array;
         return JsonUtility.ToJson(wrapper, prettyPrint);
     }
 
     [System.Serializable]
     private class Wrapper<T>
     {
-        public T[] Items;
+        public T[] words;
     }
 }
