@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{B16C3777-5688-99CD-A492-0CC03206BF2E}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WordSpawnerScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlaySceneScript.cs">
     <Files>
       <File FileName="Assets/Scripts/WordCollisionScript.cs" Line="60" Column="45" />
       <File FileName="Assets/Scripts/Word.cs" Line="5" Column="54" />
@@ -8,7 +8,7 @@
       <File FileName="Assets/Scripts/TollsManagerScript.cs" Line="7" Column="5" />
       <File FileName="Assets/Scripts/PlaySceneScript.cs" Line="10" Column="44" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="11" Column="34" />
-      <File FileName="Assets/Scripts/WordSpawnerScript.cs" Line="71" Column="106" />
+      <File FileName="Assets/Scripts/WordSpawnerScript.cs" Line="71" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

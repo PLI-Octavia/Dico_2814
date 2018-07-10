@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.InteropServices;
-using UnityEngine.SceneManagement;
-
-public class BindingDllClass
-{
-    [DllImport("__Internal")]
-    public static extern string GetConfig();
-}
 
 public class WordSpawnerScript : MonoBehaviour {
 
@@ -23,12 +16,16 @@ public class WordSpawnerScript : MonoBehaviour {
 
     [DllImport("__Internal")]
     private static extern string GetConfig();
+
+    // Keep this line for tests
+    //private string json = "{\"words\":[{\"word\":\"Bonjours\",\"correction\":\"Bonjour\"},{\"word\":\"Pomme\",\"correction\":\"Pomme\"},{\"word\":\"Chateau\",\"correction\":\"Chatau\"},{\"word\":\"vraix\",\"correction\":\"vrai\"},{\"word\":\"toujour\",\"correction\":\"toujours\"}],\"limit\":\"2\"}";
  
-    // Load words from json file and spawn them repeatedly.
+    // Load words from external json and spawn them repeatedly.
     void Awake()
     {
         // TODO: Load from jsonConfig.
         string json = GetConfig();
+        Debug.Log(json);
         words = JsonHelper.FromJson<WordObject>(json);
 
         // Get the limit send by the json and save it in GameManager
@@ -73,9 +70,6 @@ public class WordSpawnerScript : MonoBehaviour {
 
         numberOfWords -= 1;
     }
-
-    // TODO Delete
-    //private string json = "{\"words\":[{\"word\":\"Bonjours\",\"correction\":\"Bonjour\"},{\"word\":\"Pomme\",\"correction\":\"Pomme\"},{\"word\":\"Chateau\",\"correction\":\"Chatau\"},{\"word\":\"vraix\",\"correction\":\"vrai\"},{\"word\":\"toujour\",\"correction\":\"toujours\"}],\"limit\":\"2\"}";
 }
 
 // This class is used to serialize a json array, which is not possible with the native JsonUtility class.
