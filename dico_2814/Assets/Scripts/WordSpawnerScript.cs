@@ -25,7 +25,7 @@ public class WordSpawnerScript : MonoBehaviour {
     {
         // TODO: Load from jsonConfig.
         string json = GetConfig();
-        Debug.Log(json);
+        Debug.Log(GetConfig());
         words = JsonHelper.FromJson<WordObject>(json);
 
         // Get the limit send by the json and save it in GameManager

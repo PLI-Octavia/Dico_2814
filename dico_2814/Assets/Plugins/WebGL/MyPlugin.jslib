@@ -4,7 +4,10 @@ var MyPlugin = {
     },
 
     GetConfig: function () {
-    	return gameManagement.getConfig()
+    	var returnStr = gameManagement.getConfig()
+	    var buffer = _malloc(returnStr.length + 1);
+	    writeStringToMemory(returnStr, buffer);
+	    return buffer;
   	},
 };
 mergeInto(LibraryManager.library, MyPlugin);
