@@ -9,5 +9,8 @@ var MyPlugin = {
 	    writeStringToMemory(returnStr, buffer);
 	    return buffer;
   	},
+  	QuitGame: function () {
+  		gameManagement.quitGame()
+  	}
 };
 mergeInto(LibraryManager.library, MyPlugin);
